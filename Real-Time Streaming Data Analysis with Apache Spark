@@ -1,0 +1,63 @@
+# README: Apple Stock Analysis using Apache Spark
+
+## Introduction
+This project utilizes Apache Spark to conduct an analysis of Apple Inc. (AAPL) stock prices, fetched from Yahoo Finance. The analysis spans data ingestion, exploratory data analysis (EDA), time series analysis, and predictive modeling using linear regression. It also includes performance tuning for the Spark application.
+
+## Prerequisites
+- Python 3.x
+- PySpark
+- An internet connection for downloading stock data
+- Libraries: yfinance, matplotlib, seaborn
+
+## Installation
+Install the required Python packages using pip:
+```sh
+pip install pyspark yfinance matplotlib seaborn
+```
+
+## Running the Application
+
+### Initializing a Spark Session
+Ensure PySpark is installed and then start a Spark session in your Python environment:
+```python
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.appName("AppleStockAnalysis").getOrCreate()
+```
+
+### Fetching Data from Yahoo Finance
+Using the `yfinance` library, the script fetches historical data for Apple Inc.:
+```python
+import yfinance as yf
+aapl_data = yf.download('AAPL', start='2013-01-01')
+```
+
+### Data Analysis
+The code performs EDA using PySpark and visualizes data distributions with matplotlib and seaborn. It includes time series analysis plotting the closing prices and computes statistical measures such as max, min, and average closing prices.
+
+### Window Operations
+It performs time-based data aggregations using PySpark's window functions to calculate, for instance, a 5-day moving average for the closing prices.
+
+### Predictive Modeling
+The project utilizes Spark MLlib to construct a linear regression model predicting stock prices. The code splits the data into training and test sets, trains the model, makes predictions, and evaluates the model using RMSE.
+
+### Performance Tuning
+The Spark session is configured for optimized performance, and the script notes the performance improvements achieved.
+
+## Visualization
+The project includes code to plot the data and model predictions, using matplotlib for creating visual insights.
+
+## Closing the Spark Session
+Remember to stop the Spark session once the analysis is complete to free up resources:
+```python
+spark.stop()
+```
+
+## Summary
+The README documents the project's objective, setup instructions, and provides a step-by-step guide to running the application. It also includes a brief overview of the analysis and performance tuning results.
+
+## Notes
+- Ensure you have Java installed on your machine as it is required for running Spark.
+- The performance tuning section in the code is optional and can be adjusted based on the available system resources.
+- For the full code, please refer to the provided Jupyter notebook link.
+
+For more detailed instructions and troubleshooting, refer to the Apache Spark documentation.
