@@ -11,7 +11,7 @@ This project utilizes Apache Spark to conduct an analysis of Apple Inc. (AAPL) s
 
 ## Installation
 Install the required Python packages using pip:
-```sh
+```
 pip install pyspark yfinance matplotlib seaborn
 ```
 
